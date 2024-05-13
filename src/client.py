@@ -60,6 +60,18 @@ class Client(object):
         for e in range(self.local_epoch):
             for step, batch in enumerate(self.dataloader):
                 age_ids, input_ids, posi_ids, segment_ids, attMask, targets, _ = batch
+                
+                
+                print("Input data shapes during update:")
+                print("Age IDs:", age_ids.shape)
+                print("Input IDs:", input_ids.shape)
+                print("Position IDs:", posi_ids.shape)
+                print("Segment IDs:", segment_ids.shape)
+                print("Attention Mask:", attMask.shape)
+                print("Targets:", targets.shape)
+                
+                
+                
                 targets = torch.tensor(mlb.transform(targets.numpy()), dtype=torch.float32).to(self.device)
                 batch = tuple(t.to(self.device) for t in batch)
                 age_ids, input_ids, posi_ids, segment_ids, attMask, _, _ = batch
@@ -84,6 +96,17 @@ class Client(object):
         with torch.no_grad():
             for step, batch in enumerate(self.dataloader):
                 age_ids, input_ids, posi_ids, segment_ids, attMask, targets, _ = batch
+                
+                print("Input data shapes during update:")
+                print("Age IDs:", age_ids.shape)
+                print("Input IDs:", input_ids.shape)
+                print("Position IDs:", posi_ids.shape)
+                print("Segment IDs:", segment_ids.shape)
+                print("Attention Mask:", attMask.shape)
+                print("Targets:", targets.shape)
+                
+                
+                
                 targets = torch.tensor(mlb.transform(targets.numpy()), dtype=torch.float32).to(self.device)
                 batch = tuple(t.to(self.device) for t in batch)
                 age_ids, input_ids, posi_ids, segment_ids, attMask, _, _ = batch
